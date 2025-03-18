@@ -9,11 +9,58 @@ body {
   color: #222;
   font-size: 16px;
   line-height: 1.2;
-  font-family: 'Roboto', sans-serif;
-  font-weight: lighter;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-optical-sizing: auto;
 }
 .page-wrapper {
+  display: flex;
 	width: 100%;
-	max-width: 72em; 
-	margin: 20px auto;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.page-header {
+  text-align: center;
+  padding: 2em;
+}
+h1, h2 {
+  text-wrap: balance;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fa573e;
+  margin-bottom: 2rem;
+}
+h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+p {
+  margin-bottom: 2rem;
+  text-wrap: pretty;
+}
+@media only screen and ( min-width: 37.5em ) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and ( min-width: 56.25em ) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
 }
