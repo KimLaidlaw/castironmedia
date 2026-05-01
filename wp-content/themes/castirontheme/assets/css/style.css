@@ -4,6 +4,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}
 ul,ol{padding-inline-start:0;margin-block-start:0;margin-block-end:0;}
 
+*, *::before, *::after { box-sizing: border-box; }
+
 /* utility classes */
 .nowrap{white-space:nowrap;}
 .hidden{display:none;}
@@ -32,6 +34,11 @@ ul,ol{padding-inline-start:0;margin-block-start:0;margin-block-end:0;}
   --double-space: 2rem;
   --max-width: 80rem;
   --narrow-max-width: 56.25rem;
+
+  --header-height: 4rem;
+  --section-padding-x: 1.25rem;
+  --section-padding-y: 2rem;
+  --content-max-width: 75rem;
 }
 
 body {
@@ -51,12 +58,6 @@ img {
 /* ============================
    LAYOUT
    ============================ */
-:root {
-  --header-height: 4rem;
-  --section-padding-x: 1.25rem;
-  --section-padding-y: 4rem;
-  --content-max-width: 75rem;
-}
 
 .page-wrapper {
   display: flex;
@@ -208,7 +209,7 @@ h1, .head-one {
   margin-bottom: 2rem;
 }
 h2, .head-two {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 500;
 }
 h3, .head-three {
@@ -266,7 +267,7 @@ a {
     font-size: 5rem;
   }
   h2, .head-two {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   p {
     font-size: 1.25rem;
@@ -395,5 +396,69 @@ a {
   }
   .title-list {
     font-size: 1rem
+  }
+}
+
+/* ============================
+   LOVE SECTION
+   ============================ */
+.love-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Images: stacked/offset pair */
+.love-images {
+  display: grid;
+  grid-template-columns: 50% calc(50% - var(--section-padding-x));
+  grid-template-rows: auto auto;
+  gap: var(--section-padding-x);
+}
+.love-image {
+  min-width: 0; /* prevent grid blowout from intrinsic image size */
+  overflow: hidden;
+}
+.love-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.love-image--blowtorch {
+  grid-column: 1;
+  grid-row: 1;
+  aspect-ratio: 4 / 5;
+}
+.love-image--waffle {
+  grid-column: 2;
+  grid-row: 1;
+  aspect-ratio: 4 / 5;
+  margin-top: 4rem; /* offset downward to create staggered effect */
+}
+
+/* Text */
+.love-text h2 {
+  margin-bottom: 1.5rem;
+}
+.love-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Desktop: images left, text right */
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .love-section {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5rem;
+  }
+  .love-images {
+    flex: 0 0 45%;
+    max-width: 45%;
+    padding-right: 0;
+  }
+  .love-text {
+    flex: 1;
+    padding-top: 2rem;
   }
 }
