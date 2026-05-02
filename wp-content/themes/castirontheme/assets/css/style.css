@@ -36,8 +36,12 @@ ul,ol{padding-inline-start:0;margin-block-start:0;margin-block-end:0;}
   --narrow-max-width: 56.25rem;
 
   --header-height: 4rem;
-  --section-padding-x: 1.25rem;
-  --section-padding-y: 2rem;
+  --mobile-padding-x: 1rem;
+  --mobile-padding-y: 2rem;
+  --mid-padding-x: 1.5rem;
+  --mid-padding-y: 3rem;
+  --desktop-padding-x: 2rem;
+  --desktop-padding-y: 4rem;
   --content-max-width: 75rem;
 }
 
@@ -84,7 +88,7 @@ img {
   justify-content: space-between;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 var(--section-padding-x);
+  padding: 0 var(--mobile-padding-x);
   height: var(--header-height);
 }
 .header-logo img {
@@ -155,7 +159,7 @@ img {
     right: 0;
     background: var(--white);
     border-bottom: 1px solid #e8e4df;
-    padding: 1rem var(--section-padding-x) 1.5rem;
+    padding: 1rem var(--mobile-padding-x) 1.5rem;
   }
   .nav.is-open {
     display: block;
@@ -181,7 +185,17 @@ img {
 .section {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: var(--section-padding-y) var(--section-padding-x);
+  padding: var(--mobile-padding-y) var(--mobile-padding-x);
+}
+@media only screen and (min-width: 37.5em) { /* 600px */
+  .section {
+    padding: var(--mid-padding-y) var(--mid-padding-x);
+  }
+}
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .section {
+    padding: var(--desktop-padding-y) var(--desktop-padding-x);
+  }
 }
 
 /* ============================
@@ -194,7 +208,7 @@ img {
 .footer-content {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 1.5rem var(--section-padding-x);
+  padding: 1.5rem var(--mobile-padding-x);
   text-align: center;
 }
 h1, .head-one, h2, .head-two, h3, .head-three {
@@ -210,6 +224,7 @@ h1, .head-one {
 }
 h2, .head-two {
   font-size: 1.75rem;
+  color: var(--highlight);
   font-weight: 500;
 }
 h3, .head-three {
@@ -320,14 +335,14 @@ a {
 .hero-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: var(--mobile-padding-x);
   max-width: 75em;
 }
 .hero-text {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2em;
+  gap: var(--mobile-padding-x);
 }
 .hero-section h1 {
   margin-bottom: 0;
@@ -338,7 +353,7 @@ a {
 .title-row {
   display: flex;
   justify-content: end;
-  gap: 1em;
+  gap: var(--mobile-padding-x);
 }
 .cast-iron-logo {
   flex: 0 1 5.75em;
@@ -348,7 +363,7 @@ a {
   flex: 0 1 13em;
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: var(--mobile-padding-x);
   max-width: 16em;
   text-transform: uppercase;
   font-size: .875em;
@@ -357,7 +372,7 @@ a {
   max-width: 16em;
 }
 .title-list li + li {
-  padding-top: 1em;
+  padding-top: var(--mobile-padding-x);
   border-top: 1px solid var(--black);
 }
 .email-row p {
@@ -411,9 +426,9 @@ a {
 /* Images: stacked/offset pair */
 .love-images {
   display: grid;
-  grid-template-columns: 50% calc(50% - var(--section-padding-x));
+  grid-template-columns: 50% calc(50% - var(--mobile-padding-x));
   grid-template-rows: auto auto;
-  gap: var(--section-padding-x);
+  gap: var(--mobile-padding-x);
 }
 .love-image {
   min-width: 0; /* prevent grid blowout from intrinsic image size */
@@ -460,5 +475,193 @@ a {
   .love-text {
     flex: 1;
     padding-top: 2rem;
+  }
+}
+
+/* ============================
+   FOOD STATS SECTION
+   ============================ */
+.food-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.food-image-large {
+  min-width: 0;
+  overflow: hidden;
+}
+.food-image-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.food-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.food-stat {
+  font-family: var(--display-font);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--dark-gray);
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: 0;
+}
+
+.food-image-small {
+  min-width: 0;
+  overflow: hidden;
+}
+.food-image-small img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Desktop: artichoke left, right column alongside */
+@media only screen and (min-width: 37.5em) { /* 600px */
+  .food-section {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--mid-padding-x);
+  }
+  .food-image-large {
+    flex: 0 0 calc(50% - var(--mid-padding-x));
+  }
+  .food-image-large img {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+  .food-right {
+    flex: 1;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+  .food-stat {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+  }
+}
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .food-section {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--desktop-padding-x);
+  }
+}
+
+/* ============================
+   AUTHOR SECTION
+   ============================ */
+.author-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Mobile: featured cover on top, small grid below */
+.author-books {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.author-book-featured {
+  min-width: 0;
+  overflow: hidden;
+}
+.author-book-featured img {
+  width: 100%;
+  height: 100%;
+}
+.author-books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.book-thumb {
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.book-thumb img {
+  width: 100%;
+  display: block;
+}
+/* Proportional widths: flex-basis = each cover's aspect ratio share within its row,
+   minus 0.667em per item to account for the 2 gaps (2em / 3 items) per row */
+.author-books-grid .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.84% - 0.667em); } /* Five Mary's     368×480  */
+.author-books-grid .book-thumb:nth-of-type(2) { flex: 0 0 calc(33.58% - 0.667em); } /* Rocky Horror    784×1000 */
+.author-books-grid .book-thumb:nth-of-type(3) { flex: 0 0 calc(33.58% - 0.667em); } /* Clueless        392×500  */
+.author-books-grid .book-thumb:nth-of-type(4) { flex: 0 0 calc(33.34% - 0.667em); } /* Yellowstone     830×1000 */
+.author-books-grid .book-thumb:nth-of-type(5) { flex: 0 0 calc(36.03% - 0.667em); } /* Dessert of Day  643×717  */
+.author-books-grid .book-thumb:nth-of-type(6) { flex: 0 0 calc(30.63% - 0.667em); } /* Emily in Paris  1525×2000 */
+
+/* Author text */
+.author-subhead {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.author-text h2 {
+  margin-bottom: 1.25rem;
+}
+.author-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Desktop: small grid + featured cover side by side on left, text right */
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .author-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+  .author-books {
+    flex: 0 0 55%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .author-books-grid {
+    flex: 0 0 calc(40.1% - 0.375rem);
+    align-self: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    align-content: flex-start;
+  }
+  .book-thumb {
+    margin-bottom: 0;
+  }
+  .book-thumb img {
+    width: 100%;
+    display: block;
+  }
+  /* Proportional widths for 2-per-row desktop layout, gap deduction = 0.3125rem per item */
+  .author-books-grid .book-thumb:nth-of-type(1) { flex: 0 0 calc(49.44% - 0.3125rem); } /* Five Mary's    */
+  .author-books-grid .book-thumb:nth-of-type(2) { flex: 0 0 calc(50.56% - 0.3125rem); } /* Rocky Horror   */
+  .author-books-grid .book-thumb:nth-of-type(3) { flex: 0 0 calc(48.58% - 0.3125rem); } /* Clueless       */
+  .author-books-grid .book-thumb:nth-of-type(4) { flex: 0 0 calc(51.42% - 0.3125rem); } /* Yellowstone    */
+  .author-books-grid .book-thumb:nth-of-type(5) { flex: 0 0 calc(54.05% - 0.3125rem); } /* Dessert of Day */
+  .author-books-grid .book-thumb:nth-of-type(6) { flex: 0 0 calc(45.95% - 0.3125rem); } /* Emily in Paris */
+  .author-book-featured {
+    flex: 0 0 calc(59.9% - 0.375rem);
+  }
+  .author-book-featured img {
+    width: 100%;
+    display: block;
+  }
+  .author-text {
+    flex: 0 0 calc(40% - 0.375rem);
+    padding-top: 1rem;
   }
 }
