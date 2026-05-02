@@ -755,11 +755,9 @@ a {
     display: flex;
     gap: 1rem;
   }
-  .recipe-bottom-books .book-thumb:nth-of-type(1) { 
+  .recipe-bottom-books .book-thumb:nth-of-type(1) { /* alfresco */
     flex: 0 0 calc(33.3% - 0.667em); 
-  } /* alfresco        */
-
-
+  } 
 }
 
 /* Desktop: text left | left-col books | right-col (pies + 3 books) */
@@ -775,8 +773,127 @@ a {
   }
   .recipe-media {
     flex: 0 0 58%;
-    /* flex-direction: row;
-    align-items: flex-start; */
-    /* gap: 0.625rem; */
+  }
+}
+
+/* ============================
+   PROJECT EDITOR SECTION
+   ============================ */
+.project-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.project-text h2 {
+  margin-bottom: 1.25rem;
+}
+.project-subhead {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.project-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Top: Convivir + right stack */
+.project-media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.project-top {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.project-convivir {
+  flex: 0 0 calc(67.6% - 0.25rem);
+  min-width: 0;
+}
+.project-convivir img {
+  width: 100%;
+  display: block;
+}
+.project-stack {
+  flex: 0 0 calc(32.74% - 0.25rem);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.project-stack-img img {
+  width: 100%;
+  display: block;
+}
+
+/* Bottom row: 7 books, uniform height via object-fit cover */
+.project-bottom-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+.project-bottom-row .book-thumb {
+  min-width: 0;
+  overflow: hidden;
+}
+.project-bottom-row .book-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+/* Proportional widths — 6 gaps of 0.5rem, deduction per item = 3rem/7 = 0.4286rem */
+.project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(14.27% - 0.4286rem); } /* Whole Duck           922×1115  */
+.project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(13.14% - 0.4286rem); } /* Weber Ultimate       685×900   */
+.project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(13.37% - 0.4286rem); } /* Weber Greatest Hits  1983×2560 */
+.project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(13.79% - 0.4286rem); } /* Curated Board        404×505   */
+.project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(17.28% - 0.4286rem); } /* Season               1002×1001 */
+.project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(13.48% - 0.4286rem); } /* Impossible           781×1000  */
+.project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(14.67% - 0.4286rem); } /* Our American Dream   425×500   */
+
+/* Mobile: bottom row wraps into proportional rows of 4 + 3 */
+@media (max-width: 56.25em) {
+  .project-bottom-row {
+    flex-wrap: wrap;
+  }
+  .project-bottom-row .book-thumb img {
+    height: auto;
+    object-fit: unset;
+  }
+  /* Row 1: Whole Duck, Weber Ult, Weber GH, Curated Board */
+  .project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(26.15% - 0.375rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(24.07% - 0.375rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(24.48% - 0.375rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(25.30% - 0.375rem) !important; }
+  /* Row 2: Season, Impossible, Our American Dream */
+  .project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(38.04% - 0.333rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(29.67% - 0.333rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(32.29% - 0.333rem) !important; }
+}
+
+/* Desktop: CSS Grid — media + text in row 1, bottom row spans full width in row 2 */
+@media only screen and (min-width: 56.25em) {
+  .project-section {
+    display: grid;
+    grid-template-columns: 58fr 42fr;
+    grid-template-rows: auto auto;
+    column-gap: 4rem;
+    row-gap: 0.5rem;
+  }
+  .project-media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .project-text {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 1rem;
+  }
+  .project-bottom-row {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }
