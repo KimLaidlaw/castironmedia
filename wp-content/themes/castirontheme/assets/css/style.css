@@ -665,3 +665,118 @@ a {
     padding-top: 1rem;
   }
 }
+
+/* ============================
+   RECIPE SECTION
+   ============================ */
+.recipe-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.recipe-text h2 {
+  margin-bottom: 1.25rem;
+}
+.recipe-subhead {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.recipe-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile: pies full width, then books in 3-col proportional row */
+.recipe-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.recipe-featured {
+  min-width: 0;
+}
+.recipe-featured img {
+  width: 100%;
+  display: block;
+}
+/* Mobile: left-col books shown as a proportional row */
+.recipe-books-col {
+  display: flex;
+  gap: 1em;
+}
+/* brown-sugar 0.730, barbie-bakes 0.902, american-girl 0.873 — total 2.505 */
+.recipe-books-col .book-thumb:nth-of-type(1) { flex: 0 0 calc(29.14% - 0.667em); } /* brown-sugar    */
+.recipe-books-col .book-thumb:nth-of-type(2) { flex: 0 0 calc(36.01% - 0.667em); } /* barbie-bakes   */
+.recipe-books-col .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.85% - 0.667em); } /* american-girl  */
+.recipe-books-col .book-thumb img {
+  width: 100%;
+  display: block;
+}
+.recipe-bottom-books {
+  display: flex;
+  gap: 1em;
+}
+/* alfresco 0.866, disney-princess 0.867, baby-toddler 0.896 — total 2.629 */
+.recipe-bottom-books .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.94% - 0.667em); } /* alfresco        */
+.recipe-bottom-books .book-thumb:nth-of-type(2) { flex: 0 0 calc(32.98% - 0.667em); } /* disney-princess */
+.recipe-bottom-books .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.08% - 0.667em); } /* baby-toddler    */
+
+/* Desktop: text left | left-col books | right-col (pies + 3 books) */
+@media only screen and (min-width: 37.5em) { /* 600px */
+  .recipe-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .recipe-books-col {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .recipe-books-col .book-thumb:nth-of-type(n) {
+    flex: 1 0 100%;
+  }
+  .recipe-featured {
+    grid-column: 2 / span 3;
+    grid-row: 1 / span 3 ;
+  }
+  .recipe-featured img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+  .recipe-bottom-books {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 1;
+    display: flex;
+    gap: 1rem;
+  }
+  .recipe-bottom-books .book-thumb:nth-of-type(1) { 
+    flex: 0 0 calc(33.3% - 0.667em); 
+  } /* alfresco        */
+
+
+}
+
+/* Desktop: text left | left-col books | right-col (pies + 3 books) */
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .recipe-section {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+  .recipe-text {
+    flex: 1;
+    padding-top: 1rem;
+  }
+  .recipe-media {
+    flex: 0 0 58%;
+    /* flex-direction: row;
+    align-items: flex-start; */
+    /* gap: 0.625rem; */
+  }
+}
