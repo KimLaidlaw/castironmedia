@@ -1027,7 +1027,7 @@ a {
 /* Desktop: text left, photos right */
 @media only screen and (min-width: 56.25em) {
   .work-section {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     gap: 4rem;
   }
