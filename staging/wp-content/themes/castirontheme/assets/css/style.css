@@ -11,10 +11,11 @@ ul,ol{padding-inline-start:0;margin-block-start:0;margin-block-end:0;}
 .hidden{display:none;}
 .screen-reader-only{clip:rect(1px,1px,1px,1px);height:1px;width:1px;overflow:hidden;position:absolute;}
 .clearfix::after{content:'';display:table;clear:both;}
+.uppercase{text-transform:uppercase;}
 
 @font-face {
   font-family: Maragsa;
-  src: url(/wp-content/themes/castirontheme/assets/fonts/MaragsaDisplay-GO6PD.otf);
+  src: url(/staging/wp-content/themes/castirontheme/assets/fonts/MaragsaDisplay-GO6PD.otf);
   font-weight: normal;
 }
 
@@ -36,6 +37,7 @@ ul,ol{padding-inline-start:0;margin-block-start:0;margin-block-end:0;}
   --narrow-max-width: 56.25rem;
 
   --header-height: 4rem;
+  --footer-height: 4rem;
   --mobile-padding-x: 1rem;
   --mobile-padding-y: 2rem;
   --mid-padding-x: 1.5rem;
@@ -63,11 +65,16 @@ img {
    LAYOUT
    ============================ */
 
-.page-wrapper {
+.page-wrapper,
+.main {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
   width: 100%;
+}
+.main {
+  min-height: calc(100dvh - var(--header-height) - var(--footer-height, 0));
+  justify-content: center;
 }
 
 /* ============================
@@ -111,8 +118,14 @@ img {
   transition: color 0.2s ease;
 }
 .nav-list a:hover,
-.nav-list a:focus {
+.nav-list a:focus,
+.nav-list a:active,
+.nav-list a.current-page {
   color: var(--highlight);
+}
+.nav-list a.current-page {
+  pointer-events: none;
+  cursor: default;
 }
 
 /* Hamburger button — visible only below 900px */
@@ -208,8 +221,12 @@ img {
 .footer-content {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 1.5rem var(--mobile-padding-x);
+  padding: 0 var(--mobile-padding-x);
   text-align: center;
+  height: var(--footer-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 h1, .head-one, h2, .head-two, h3, .head-three {
   text-wrap: balance;
@@ -623,31 +640,8 @@ a {
 @media only screen and (min-width: 37.5em) { /* 600px */
   .author-books {
     gap: 0.625rem;
-  }
-  .author-books-grid {
-    gap: 0.625rem;
-  }
-  /* Proportional widths: flex-basis = each cover's aspect ratio share within its row,
-   minus 0.667em per item to account for the 2 gaps (2em / 3 items) per row */
-  .author-books-grid .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.84% - 0.4167em); } /* Five Mary's     368×480  */
-  .author-books-grid .book-thumb:nth-of-type(2) { flex: 0 0 calc(33.58% - 0.4167em); } /* Rocky Horror    784×1000 */
-  .author-books-grid .book-thumb:nth-of-type(3) { flex: 0 0 calc(33.58% - 0.4167em); } /* Clueless        392×500  */
-  .author-books-grid .book-thumb:nth-of-type(4) { flex: 0 0 calc(33.34% - 0.4167em); } /* Yellowstone     830×1000 */
-  .author-books-grid .book-thumb:nth-of-type(5) { flex: 0 0 calc(36.03% - 0.4167em); } /* Dessert of Day  643×717  */
-  .author-books-grid .book-thumb:nth-of-type(6) { flex: 0 0 calc(30.63% - 0.4167em); } /* Emily in Paris  1525×2000 */
-}
-/* Desktop: small grid + featured cover side by side on left, text right */
-@media only screen and (min-width: 56.25em) { /* 900px */
-  .author-section {
-    flex-direction: row;
-    align-items: center;
-    gap: 4rem;
-  }
-  .author-books {
-    flex: 0 0 55%;
     flex-direction: row;
     align-items: flex-start;
-    gap: 0.625rem;
   }
   .author-books-grid {
     flex: 0 0 calc(40.1% - 0.375rem);
@@ -673,6 +667,21 @@ a {
   .author-books-grid .book-thumb:nth-of-type(6) { flex: 0 0 calc(45.95% - 0.3125rem); } /* Emily in Paris */
   .author-book-featured {
     flex: 0 0 calc(59.9% - 0.375rem);
+  }
+  .author-book-featured img {
+    width: 100%;
+    display: block;
+  }
+}
+/* Desktop: small grid + featured cover side by side on left, text right */
+@media only screen and (min-width: 56.25em) { /* 900px */
+  .author-section {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 4rem;
+  }
+  .author-books {
+    flex: 0 0 55%;
   }
   .author-book-featured img {
     width: 100%;
@@ -782,7 +791,7 @@ a {
 /* Desktop: text left | left-col books | right-col (pies + 3 books) */
 @media only screen and (min-width: 56.25em) { /* 900px */
   .recipe-section {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: flex-start;
     gap: 4rem;
   }
@@ -814,7 +823,7 @@ a {
   margin-bottom: 1rem;
 }
 .project-text {
-  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .project-text p:last-child {
   margin-bottom: 0;
@@ -918,7 +927,9 @@ a {
 @media only screen and (min-width: 56.25em) {
   .project-section {
     display: grid;
-    grid-template-columns: 58fr 42fr;
+    grid-template-columns: 50fr 50fr;
+        grid-template-columns: 58fr 42fr;
+
     grid-template-rows: auto auto;
     column-gap: 4rem;
     row-gap: 0.5rem;
@@ -928,9 +939,13 @@ a {
     grid-row: 1;
   }
   .project-text {
+    margin-bottom: 0;
     grid-column: 2;
     grid-row: 1;
     margin-top: 0;
+  }
+  .project-text p:not(.project-subhead){
+    font-size: 1.375rem;
   }
   .project-bottom-row {
     grid-column: 1 / -1;
@@ -944,7 +959,11 @@ a {
   .project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(17.1% - 0.5357rem); } /* Season               1002×1001 */
   .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(13.48% - 0.5357rem); } /* Impossible           781×1000  */
   .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(14.67% - 0.5357rem); } /* Our American Dream   425×500   */
- 
+}
+@media only screen and (min-width: 59em) {
+  .project-text p:not(.project-subhead){
+    font-size: 1.5rem;
+  }
 }
 
 /* ============================
@@ -1008,7 +1027,7 @@ a {
 /* Desktop: text left, photos right */
 @media only screen and (min-width: 56.25em) {
   .work-section {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     gap: 4rem;
   }
@@ -1058,7 +1077,7 @@ a {
 }
 @media only screen and (min-width: 56.25em) {
   .bio-section {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: flex-start;
     gap: 4rem;
   }
