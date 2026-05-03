@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Author | Kim Laidlaw | Cast Iron Media</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link rel="stylesheet" href="wp-content/themes/castirontheme/assets/css/style.css">
+
+  <link rel="icon" type="image/png" href="wp-content/themes/castirontheme/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.svg">
+  <link rel="shortcut icon" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="wp-content/themes/castirontheme/assets/images/favicons/apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <header class="header">
+      <div class="header-content">
+        <a href="index.html" class="header-logo" aria-label="Cast Iron Media home">
+          <img src="wp-content/themes/castirontheme/assets/images/castironlogo.png" alt="Cast Iron Media logo">
+        </a>
+        <nav class="nav" id="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="author.html">Author</a></li>
+            <li><a href="recipe-developer.html">Recipe Developer</a></li>
+            <li><a href="project-editor.html">Project Editor</a></li>
+            <li><a href="work-with-me.html">Work With Me</a></li>
+            <li><a href="biography.html">Biography</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section id="author" class="section author-section">
+        <div class="author-books">
+          <div class="author-books-grid">
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/five-marys-ranch-raised.jpg" alt="Five Mary's Ranch Raised cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/rocky-horror-cookbook.jpg" alt="The Rocky Horror Cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/clueless-cookbook.jpg" alt="The Clueless Official Cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/yellowstone-cookbook.jpeg" alt="Yellowstone The Official Dutton Ranch Family Cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/dessert-of-the-day.jpg" alt="Dessert of the Day cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/4-author/Emily-in-Paris-The-Official-Cookbook.jpg" alt="Emily in Paris The Official Cookbook cover"></div>
+          </div>
+          <div class="author-book-featured">
+            <img src="wp-content/themes/castirontheme/assets/images/4-author/NightmareBeforeChristmas_cover.jpg" alt="Tim Burton's The Nightmare Before Christmas Official Cookbook cover">
+          </div>
+        </div>
+        <div class="author-text">
+          <h2>Cookbook Author &amp; Content Creator</h2>
+          <p class="author-subhead">I cook up more than just recipes.</p>
+          <p>I write and ghostwrite cookbooks that bring stories to life. Whether it&rsquo;s an in-world cookbook for a hit TV show or movie, a brand-driven culinary collection, or a best-selling collaboration, I create cookbooks that connect food with story in unforgettable ways.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-content">
+        <p class="footer-copyright">&copy; 2026 Cast Iron Media, LLC. All&nbsp;Rights&nbsp;Reserved.</p>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('is-open', !isOpen);
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
