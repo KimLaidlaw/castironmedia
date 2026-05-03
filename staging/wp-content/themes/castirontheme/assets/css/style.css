@@ -791,7 +791,7 @@ a {
 /* Desktop: text left | left-col books | right-col (pies + 3 books) */
 @media only screen and (min-width: 56.25em) { /* 900px */
   .recipe-section {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: flex-start;
     gap: 4rem;
   }
