@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biography | Kim Laidlaw | Cast Iron Media</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link rel="stylesheet" href="wp-content/themes/castirontheme/assets/css/style.css">
+
+  <link rel="icon" type="image/png" href="wp-content/themes/castirontheme/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.svg">
+  <link rel="shortcut icon" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="wp-content/themes/castirontheme/assets/images/favicons/apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <header class="header">
+      <div class="header-content">
+        <a href="index.html" class="header-logo" aria-label="Cast Iron Media home">
+          <img src="wp-content/themes/castirontheme/assets/images/castironlogo.png" alt="Cast Iron Media logo">
+        </a>
+        <nav class="nav" id="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="author.html">Author</a></li>
+            <li><a href="recipe-developer.html">Recipe Developer</a></li>
+            <li><a href="project-editor.html">Project Editor</a></li>
+            <li><a href="work-with-me.html">Work With Me</a></li>
+            <li><a href="biography.html">Biography</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section id="biography" class="section bio-section">
+        <div class="bio-media">
+          <img src="wp-content/themes/castirontheme/assets/images/8-bio/bio-bowl.JPG" alt="Soup bowl with spoons at Paul Bert restaurant">
+        </div>
+        <div class="bio-text">
+          <h2>Biography</h2>
+          <p><strong>KIM LAIDLAW,</strong> owner of <strong>Cast Iron Media LLC,</strong> is a New York Times best-selling cookbook author, editor, and recipe developer. She is the author or coauthor of eleven cookbooks, including bestsellers <strong>Yellowstone: The Official Dutton Ranch Family Cookbook, Tim Burton&rsquo;s The Nightmare Before Christmas cookbook, Emily in Paris: The Official Cookbook, Five Marys Ranch Raised Cookbook,</strong> along with <strong>Clueless: The Official Cookbook</strong> and <strong>The Rocky Horror Cookbook.</strong> She has authored numerous Williams Sonoma cookbooks, including <strong>Everyday Slow Cooking, Quick Slow Cooking, Home Baked Comfort, Dessert of the Day,</strong> and IACP award-nominated <strong>Baby &amp; Toddler on the Go.</strong></p>
+          <p>With over 24 years of experience in book publishing and packaging, Kim has managed hundreds of cookbook projects, including Kendall-Jackson&rsquo;s <strong>SEASON,</strong> winner of the 2019 IACP Book of the Year Award. She is a seasoned recipe developer and tester working with international brands, celebrities, chefs, bloggers, and cookbook authors. Her clients include Disney, Paramount, Netflix, Samuel Adams, Weber, Hog Island, KitchenAid, Williams Sonoma, American Girl, and Impossible Foods. She is a former professional baker and baking instructor at the San Francisco Cooking School.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-content">
+        <p class="footer-copyright">&copy; 2026 Cast Iron Media, LLC. All&nbsp;Rights&nbsp;Reserved.</p>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('is-open', !isOpen);
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>

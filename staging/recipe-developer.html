@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe Developer | Kim Laidlaw | Cast Iron Media</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link rel="stylesheet" href="wp-content/themes/castirontheme/assets/css/style.css">
+
+  <link rel="icon" type="image/png" href="wp-content/themes/castirontheme/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.svg">
+  <link rel="shortcut icon" href="wp-content/themes/castirontheme/assets/images/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="wp-content/themes/castirontheme/assets/images/favicons/apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <header class="header">
+      <div class="header-content">
+        <a href="index.html" class="header-logo" aria-label="Cast Iron Media home">
+          <img src="wp-content/themes/castirontheme/assets/images/castironlogo.png" alt="Cast Iron Media logo">
+        </a>
+        <nav class="nav" id="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="author.html">Author</a></li>
+            <li><a href="recipe-developer.html">Recipe Developer</a></li>
+            <li><a href="project-editor.html">Project Editor</a></li>
+            <li><a href="work-with-me.html">Work With Me</a></li>
+            <li><a href="biography.html">Biography</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section id="recipe" class="section recipe-section">
+        <div class="recipe-media">
+          <div class="recipe-books-col">
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/brown-sugar-kitchen-cookbook.jpg" alt="Brown Sugar Kitchen cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/barbie-bakes-cookbook.jpg" alt="Barbie Bakes cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/american-girl-baking.jpg" alt="American Girl Baking cookbook cover"></div>
+          </div>
+          <div class="recipe-featured">
+            <img src="wp-content/themes/castirontheme/assets/images/5-recipe/recipe-pies.JPG" alt="Freshly baked pies arranged in a circle">
+          </div>
+          <div class="recipe-bottom-books">
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/alfresco-cookbook.jpeg" alt="Alfresco cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/disney-princess-baking.jpg" alt="Disney Princess Baking cookbook cover"></div>
+            <div class="book-thumb"><img src="wp-content/themes/castirontheme/assets/images/5-recipe/baby-toddler-cookbook.jpg" alt="Baby and Toddler cookbook cover"></div>
+          </div>
+        </div>
+        <div class="recipe-text">
+          <h2>Recipe Developer &amp; Tester</h2>
+          <p class="recipe-subhead">I bring recipes to life, from concept to perfection.</p>
+          <p>Whether developing and testing dishes for brands like Disney, Netflix, Williams Sonoma, Samuel Adams, Paramount, American Girl, and Impossible Foods, or collaborating with top chefs, bloggers, and cookbook authors, I craft recipes that are as reliable as they are flavorful.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-content">
+        <p class="footer-copyright">&copy; 2026 Cast Iron Media, LLC. All&nbsp;Rights&nbsp;Reserved.</p>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('is-open', !isOpen);
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
