@@ -1077,7 +1077,7 @@ a {
 }
 @media only screen and (min-width: 56.25em) {
   .bio-section {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: flex-start;
     gap: 4rem;
   }
