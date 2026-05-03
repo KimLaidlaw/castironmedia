@@ -118,8 +118,14 @@ img {
   transition: color 0.2s ease;
 }
 .nav-list a:hover,
-.nav-list a:focus {
+.nav-list a:focus,
+.nav-list a:active,
+.nav-list a.current-page {
   color: var(--highlight);
+}
+.nav-list a.current-page {
+  pointer-events: none;
+  cursor: default;
 }
 
 /* Hamburger button — visible only below 900px */
