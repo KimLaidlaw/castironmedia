@@ -242,6 +242,9 @@ p {
   margin-bottom: 2rem;
   text-wrap: pretty;
 }
+p strong {
+  font-weight: 600;
+}
 .footer-copyright {
   font-size: .75em;
 } 
@@ -571,7 +574,7 @@ a {
 .author-books {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .author-book-featured {
   min-width: 0;
@@ -617,7 +620,22 @@ a {
 .author-text p:last-child {
   margin-bottom: 0;
 }
-
+@media only screen and (min-width: 37.5em) { /* 600px */
+  .author-books {
+    gap: 0.625rem;
+  }
+  .author-books-grid {
+    gap: 0.625rem;
+  }
+  /* Proportional widths: flex-basis = each cover's aspect ratio share within its row,
+   minus 0.667em per item to account for the 2 gaps (2em / 3 items) per row */
+  .author-books-grid .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.84% - 0.4167em); } /* Five Mary's     368×480  */
+  .author-books-grid .book-thumb:nth-of-type(2) { flex: 0 0 calc(33.58% - 0.4167em); } /* Rocky Horror    784×1000 */
+  .author-books-grid .book-thumb:nth-of-type(3) { flex: 0 0 calc(33.58% - 0.4167em); } /* Clueless        392×500  */
+  .author-books-grid .book-thumb:nth-of-type(4) { flex: 0 0 calc(33.34% - 0.4167em); } /* Yellowstone     830×1000 */
+  .author-books-grid .book-thumb:nth-of-type(5) { flex: 0 0 calc(36.03% - 0.4167em); } /* Dessert of Day  643×717  */
+  .author-books-grid .book-thumb:nth-of-type(6) { flex: 0 0 calc(30.63% - 0.4167em); } /* Emily in Paris  1525×2000 */
+}
 /* Desktop: small grid + featured cover side by side on left, text right */
 @media only screen and (min-width: 56.25em) { /* 900px */
   .author-section {
@@ -629,7 +647,7 @@ a {
     flex: 0 0 55%;
     flex-direction: row;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.625rem;
   }
   .author-books-grid {
     flex: 0 0 calc(40.1% - 0.375rem);
@@ -704,24 +722,24 @@ a {
 /* Mobile: left-col books shown as a proportional row */
 .recipe-books-col {
   display: flex;
-  gap: 1em;
+  gap: 0.5rem;
 }
 /* brown-sugar 0.730, barbie-bakes 0.902, american-girl 0.873 — total 2.505 */
-.recipe-books-col .book-thumb:nth-of-type(1) { flex: 0 0 calc(29.14% - 0.667em); } /* brown-sugar    */
-.recipe-books-col .book-thumb:nth-of-type(2) { flex: 0 0 calc(36.01% - 0.667em); } /* barbie-bakes   */
-.recipe-books-col .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.85% - 0.667em); } /* american-girl  */
+.recipe-books-col .book-thumb:nth-of-type(1) { flex: 0 0 calc(29.14% - 0.333em); } /* brown-sugar    */
+.recipe-books-col .book-thumb:nth-of-type(2) { flex: 0 0 calc(36.01% - 0.333em); } /* barbie-bakes   */
+.recipe-books-col .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.85% - 0.333em); } /* american-girl  */
 .recipe-books-col .book-thumb img {
   width: 100%;
   display: block;
 }
 .recipe-bottom-books {
   display: flex;
-  gap: 1em;
+  gap: 0.5rem;
 }
 /* alfresco 0.866, disney-princess 0.867, baby-toddler 0.896 — total 2.629 */
-.recipe-bottom-books .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.94% - 0.667em); } /* alfresco        */
-.recipe-bottom-books .book-thumb:nth-of-type(2) { flex: 0 0 calc(32.98% - 0.667em); } /* disney-princess */
-.recipe-bottom-books .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.08% - 0.667em); } /* baby-toddler    */
+.recipe-bottom-books .book-thumb:nth-of-type(1) { flex: 0 0 calc(32.94% - 0.333em); } /* alfresco        */
+.recipe-bottom-books .book-thumb:nth-of-type(2) { flex: 0 0 calc(32.98% - 0.333em); } /* disney-princess */
+.recipe-bottom-books .book-thumb:nth-of-type(3) { flex: 0 0 calc(34.08% - 0.333em); } /* baby-toddler    */
 
 /* Desktop: text left | left-col books | right-col (pies + 3 books) */
 @media only screen and (min-width: 37.5em) { /* 600px */
@@ -729,13 +747,14 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto auto;
+    gap: .625em;
   }
   .recipe-books-col {
     grid-column: 1 / span 1;
     grid-row: 1 / span 3;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.625rem;
   }
   .recipe-books-col .book-thumb:nth-of-type(n) {
     flex: 1 0 100%;
@@ -753,10 +772,10 @@ a {
     grid-column: 1 / span 3;
     grid-row: 4 / span 1;
     display: flex;
-    gap: 1rem;
+    gap: 0.625rem;
   }
   .recipe-bottom-books .book-thumb:nth-of-type(1) { /* alfresco */
-    flex: 0 0 calc(33.3% - 0.667em); 
+    flex: 0 0 calc(34% - 0.625rem); 
   } 
 }
 
@@ -857,24 +876,47 @@ a {
 .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(13.48% - 0.4286rem); } /* Impossible           781×1000  */
 .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(14.67% - 0.4286rem); } /* Our American Dream   425×500   */
 
-/* Mobile: bottom row wraps into proportional rows of 4 + 3 */
-@media (max-width: 56.25em) {
+.project-bottom-row {
+  flex-wrap: wrap;
+}
+.project-bottom-row .book-thumb img {
+  height: auto;
+  object-fit: unset;
+}
+/* Row 1: Whole Duck, Weber Ult, Weber GH, Curated Board */
+.project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(26.15% - 0.375rem) !important; }
+.project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(24.07% - 0.375rem) !important; }
+.project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(24.48% - 0.375rem) !important; }
+.project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(25.30% - 0.375rem) !important; }
+/* Row 2: Season, Impossible, Our American Dream */
+.project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(38.04% - 0.333rem) !important; }
+.project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(29.67% - 0.333rem) !important; }
+.project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(32.29% - 0.333rem) !important; }
+
+@media only screen and (min-width: 37.5em) {
+  .project-media,
+  .project-top,
+  .project-stack,
   .project-bottom-row {
-    flex-wrap: wrap;
+    gap: 0.625rem;
   }
-  .project-bottom-row .book-thumb img {
-    height: auto;
-    object-fit: unset;
-  }
+  /* Proportional widths — 6 gaps of 0.5rem, deduction per item = 3rem/7 = 0.5357rem */
+  .project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(14.27% - 0.5357rem); } /* Whole Duck           922×1115  */
+  .project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(13.14% - 0.5357rem); } /* Weber Ultimate       685×900   */
+  .project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(13.37% - 0.5357rem); } /* Weber Greatest Hits  1983×2560 */
+  .project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(13.79% - 0.5357rem); } /* Curated Board        404×505   */
+  .project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(17.28% - 0.5357rem); } /* Season               1002×1001 */
+  .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(13.48% - 0.5357rem); } /* Impossible           781×1000  */
+  .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(14.67% - 0.5357rem); } /* Our American Dream   425×500   */
   /* Row 1: Whole Duck, Weber Ult, Weber GH, Curated Board */
-  .project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(26.15% - 0.375rem) !important; }
-  .project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(24.07% - 0.375rem) !important; }
-  .project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(24.48% - 0.375rem) !important; }
-  .project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(25.30% - 0.375rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(1) { flex: 0 0 calc(26.15% - 0.4688rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(2) { flex: 0 0 calc(24.07% - 0.4688rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(3) { flex: 0 0 calc(24.48% - 0.4688rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(4) { flex: 0 0 calc(25.30% - 0.4688rem) !important; }
   /* Row 2: Season, Impossible, Our American Dream */
-  .project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(38.04% - 0.333rem) !important; }
-  .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(29.67% - 0.333rem) !important; }
-  .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(32.29% - 0.333rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(5) { flex: 0 0 calc(38.04% - 0.4167rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(6) { flex: 0 0 calc(29.67% - 0.4167rem) !important; }
+  .project-bottom-row .book-thumb:nth-of-type(7) { flex: 0 0 calc(32.29% - 0.4167rem) !important; }
 }
 
 /* Desktop: CSS Grid — media + text in row 1, bottom row spans full width in row 2 */
@@ -884,7 +926,7 @@ a {
     grid-template-columns: 58fr 42fr;
     grid-template-rows: auto auto;
     column-gap: 4rem;
-    row-gap: 0.5rem;
+    /* row-gap: 0.5rem; */
   }
   .project-media {
     grid-column: 1;
@@ -953,7 +995,12 @@ a {
 .work-col ,.work-col--right .work-photo:nth-of-type(1) {
   flex: 0 1 80%;
 }
-
+@media only screen and (min-width: 37.5em) {
+  .work-photos,
+  .work-col {
+    gap: 0.625rem;
+  }
+}
 /* Desktop: text left, photos right */
 @media only screen and (min-width: 56.25em) {
   .work-section {
@@ -967,5 +1014,50 @@ a {
   }
   .work-photos {
     flex: 0 0 52%;
+  }
+}
+
+/* ============================
+   BIO SECTION
+   ============================ */
+.bio-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.bio-media {
+  min-width: 0;
+  overflow: hidden;
+}
+.bio-media img {
+  width: 100%;
+  display: block;
+}
+.bio-text h2 {
+  margin-bottom: 1.25rem;
+}
+.bio-text p {
+  margin-bottom: 1.25rem;
+}
+.bio-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 56.25em) {
+  .bio-section {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+  .bio-media {
+    flex: 0 0 32%;
+  }
+  .bio-text {
+    flex: 1;
+    padding-top: 0.25rem;
+    font-size: 0.875rem;
+  }
+  .bio-text h2 {
+    margin-bottom: 1.5rem;
   }
 }
